@@ -238,9 +238,9 @@ boot_loader_configuration () {
 	echo y | pacman -S "$PROCESSOR"-ucode
 
 	echo "title GobOS" > /boot/loader/entries/arch.conf
-	echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+	echo "linux /vmlinuz-linux-zen" >> /boot/loader/entries/arch.conf
 	echo "initrd /"$PROCESSOR"-ucode.img" >> /boot/loader/entries/arch.conf
-	echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+	echo "initrd /initramfs-linux-zen.img" >> /boot/loader/entries/arch.conf
 	echo "options root=PARTUUID=$(blkid -s PARTUUID -o value "$PART3") rw" >> /boot/loader/entries/arch.conf
 
 	echo "### Completed boot loader configuration."
