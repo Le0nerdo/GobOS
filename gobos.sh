@@ -288,8 +288,8 @@ misc_configuration() {
 	if [ "$BLUETOOTH" == "1" ]:
 	then
 		# TODO see needed inputs and see if bluez-utils is needed
-		pacman -S pipewire lib32-pipewire wireplumber
-		pacman -S bluez bluez-utils
+		echo y | pacman -S pipewire lib32-pipewire wireplumber
+		echo y | pacman -S bluez bluez-utils
 		systemctl enable bluetooth.service
 	fi
 
