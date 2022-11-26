@@ -285,7 +285,7 @@ gpu_configuration () {
 misc_configuration() {
 	echo "### Starting misc configuration..."
 
-	if [ "$BLUETOOTH" == "1" ]:
+	if [ "$BLUETOOTH" == "1" ]
 	then
 		# TODO see needed inputs and see if bluez-utils is needed
 		pacman -S pipewire lib32-pipewire wireplumber
