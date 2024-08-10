@@ -48,7 +48,7 @@ temp_line=`sed "${temp_index}q;d" <<< "$disks"`
 DRIVE_NAME=`grep -o '/dev.*:' <<< "$temp_line"`
 DRIVE_NAME=${DRIVE_NAME::-1}
 	
-fdisk -l "$address"
+fdisk -l "$DRIVE_NAME"
 
 echo ""
 echo -e "${RED}Are you sure that you want to delete the contents of the above disk?${NC}"
@@ -103,6 +103,8 @@ partition2="/dev/`sed 2!d <<< "$partitions"`"
 partition3="/dev/`sed 3!d <<< "$partitions"`"
 partition4="/dev/`sed 4!d <<< "$partitions"`"
 
+echo "PARTITION3=$partition3" >> ./configs/VARIABLES.txt 
+
 mkfs.fat -F32 "$partition1"
 mkswap "$partition2"
 swapon "$partition2"
@@ -111,7 +113,7 @@ mkfs.ext4 "$partition4"
 
 echo "### Mounting drive..."
 mount "$partition3" /mnt
-mkdir /mnt/booti
+mkdir /mnt/boot
 mkdir /mnt/home
 mount "$partition1" /mnt/boot
 mount "$partition4" /mnt/home
@@ -125,7 +127,7 @@ pacstrap /mnt base linux-zen linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "### Moving into chroot and running configs."
-cp -r ./configs/ /mnt/destination/
+cp -r ./configs/ /mnt/configs/
 
 # Can run `arch-chroot /mnt` to manually edit things
 arch-chroot /mnt ./configs/main.sh

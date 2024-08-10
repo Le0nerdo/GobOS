@@ -13,12 +13,15 @@ cp ./out/archlinux-version-x86_64.iso /dev/disk/by-id/usb-My_flash_drive
 run `./install.sh` after booting into live enviroment.
 
 # TODO
+- AMD GPU support (can take some time, now only support new nvidia gpus)
+
 - install.sh
+  - Select keymap and save it in an info file in configs.
   - https://wiki.archlinux.org/title/Installation_guide#Verify_the_boot_mode
   - https://wiki.archlinux.org/title/Installation_guide#Select_the_mirrors
 
 - configs
-  - Hardware confi
+  - select keymap from file. currently hardcoded to fi
   - User Config
   - Game config
   - Programming config
