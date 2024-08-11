@@ -75,16 +75,14 @@ echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 pacman -Sy
 
 run_conf() {
-	chmod +x "./configs/$1"
-	"./configs$1"
+	chmod +x "./configs/$1.sh"
+	"./configs$1.sh"
 }
 
-run_conf hardware.sh
-run_conf user.sh
+run_conf hardware
+run_conf user
+run_conf visual
 
-
-# Install visual software
-#
 # Install basic software
 # -vim, konsole, bashtop, firefox, discord, git
 #
