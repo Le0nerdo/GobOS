@@ -24,8 +24,8 @@ run `./install.sh` after booting into live enviroment.
   - https://wiki.archlinux.org/title/Installation_guide#Verify_the_boot_mode
   - https://wiki.archlinux.org/title/Installation_guide#Select_the_mirrors
 
-- configs
-  - select keymap from file. currently hardcoded to fi
-  - visual config
-  - Game config
-  - Programming config
+- configs/main
+  - selecting keymap
+
+- configs/visual
+  - test wayland

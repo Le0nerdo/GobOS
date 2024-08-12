@@ -82,12 +82,8 @@ run_conf() {
 run_conf hardware
 run_conf user
 run_conf visual
-
-# Install basic software
-# -vim, konsole, bashtop, firefox, discord, git
-#
-# Gaming stuff
-#
-# Programming stuff
+run_conf basic_software
+run_conf gaming
+run_conf programming
 
 rm -r ../configs/
