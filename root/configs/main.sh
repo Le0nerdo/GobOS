@@ -76,7 +76,7 @@ pacman -Sy
 
 run_conf() {
 	chmod +x "./configs/$1.sh"
-	"./configs$1.sh"
+	"./configs/$1.sh"
 }
 
 run_conf hardware

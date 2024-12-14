@@ -51,7 +51,8 @@ if (( nvidia > 0 )) ; then
 	echo "Detected nvidia GPU, installing drivers..."
 
 	pacman -S --noconfirm linux-zen-headers nvidia-dkms nvidia-utils opencl-nvidia \
-	libglvnd lib32-nvidia-utils lib32-opencl-nvidia lib32-libglvnd nvidia-settings
+	libglvnd lib32-nvidia-utils lib32-opencl-nvidia lib32-libglvnd nvidia-settings \
+	xf86-video-fbdev
 
 	# Set nvidia_drm.modeset=1 kernel parameter
 	sed -i '$s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/arch.conf
@@ -75,10 +76,17 @@ if (( nvidia > 0 )) ; then
 	echo "Exec=/usr/bin/mkinitcpio -P" >> /etc/pacman.d/hooks/nvidia.hook
 fi
 
+AMD=`lspci -k | grep -A 2 -E "(VGA|3D)" | grep "AMD" | wc -l`
+if (( AMD > 0 )) ; then
+	echo "Detected amd GPU, installing drivers..."
+
+	pacman -S --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon xf86-video-amdgpu
+fi
+
 echo "### Completed GPU configuration."
 
 # misc stuff
-pacman -S -noconfirm pipewire lib32-pipewire wireplumber bluez bluez-utils
+pacman -S --noconfirm pipewire lib32-pipewire wireplumber bluez bluez-utils
 systemctl enable bluetooth.service
 
 echo "### Completed hardware configuration"

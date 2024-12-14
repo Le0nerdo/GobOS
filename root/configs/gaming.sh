@@ -7,7 +7,7 @@ if [[ $check != "y" ]]; then
 	exit 1
 fi
 
-pacman -S --noconfig steam
+pacman -S --noconfirm steam
 
 echo "### Finished gaming configuration."
 

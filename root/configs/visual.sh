@@ -2,11 +2,12 @@
 echo "### Starting to install visual software"
 
 # X11
-pacman -S --noconfirm xorg-server xf86-video-fbdev xorg-xinit
+pacman -S --noconfirm xorg-server xorg-xinit
 
 # KDE Plasma
 pacman -S --noconfirm plasma ttf-dejavu ttf-liberation
 
+# This seems to not work
 echo "export DESKTOP_SESSION=plasma" > .xinitrc
 echo "exec startplasma-x11" >> .xinitrc
 
